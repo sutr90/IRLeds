@@ -3,7 +3,7 @@
 
 FASTLED_USING_NAMESPACE
 
-#define DATA_PIN    4
+#define DATA_PIN    10
 #define LED_TYPE    WS2812B
 #define COLOR_ORDER GRB
 #define NUM_LEDS    60

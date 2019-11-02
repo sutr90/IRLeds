@@ -56,10 +56,10 @@ void changeBrightness(uint8_t code){
 }
 
 void controlSwitch(uint8_t code, LedArray &leds){
-	Serial.print("controlSwitch");
-	Serial.println(code);
-	Serial.print("lastColorCode");
-	Serial.println(lastColorCode);
+	//Serial.print("controlSwitch");
+	//Serial.println(code);
+	//Serial.print("lastColorCode");
+	//Serial.println(lastColorCode);
 	
 	if(code == 2) {
 		turnOff(leds);
@@ -81,33 +81,18 @@ void controls(uint8_t code, LedArray &leds) {
 	
 }
 
-
-void flash(uint8_t code) {
-  /* todo */
-}
-void strobe(uint8_t code) {
-  /* todo */
-}
-void fade(uint8_t code) {
-  /* todo */
-}
-void smooth(uint8_t code) {
-  /* todo */
-}
-
-void processCommand(uint8_t code, LedArray &leds) {
-	Serial.print("command");
-	Serial.println(code);
-	
+bool processCommand(uint8_t code, LedArray &leds) {	
   switch (code) {
     case 0:
     case 1:
     case 2:
-    case 3: controls(code, leds); return;
-    case 11: flash(code); return;
-    case 15: strobe(code); return;
-    case 19: fade(code); return;
-    case 23: smooth(code); return;
+    case 3: controls(code, leds); return false;
+    case 11: /* animation */
+    case 15: /* animation */
+    case 19: /* animation */
+    case 23: return true; /* animation */
     default: color(code, leds);
   }
+  
+  return false;
 }
